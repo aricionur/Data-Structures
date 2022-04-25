@@ -99,6 +99,26 @@ class LinkedList {
 
     return array
   }
+
+  reverse() {
+    if (this.isEmpty()) return
+
+    let prevNode = this.first
+    let node = prevNode.next
+    while (node) {
+      const tempNextNode = node.next
+
+      node.next = prevNode
+      prevNode = node
+      node = tempNextNode
+    }
+
+    // swap the 'last' and 'first'
+    const tempLast = this.last
+    this.first.next = null // 'first' will be the 'last' at one line below code. Hence, drop the next link of first node, because it has still its prior to reverse link to the second node.
+    this.last = this.first
+    this.first = tempLast
+  }
 }
 
 LinkedList.prototype.toString = function linkedListToString() {

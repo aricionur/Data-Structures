@@ -43,5 +43,8 @@ console.log(linkedList.toString())
 // linkedList.deleteFirst()
 // console.log(linkedList.size)
 
-const listAsArray = linkedList.toArray()
-console.log("listAsArray:", listAsArray)
+// const listAsArray = linkedList.toArray()
+// console.log("listAsArray:", listAsArray)
+
+linkedList.reverse()
+console.log(linkedList.toString())
