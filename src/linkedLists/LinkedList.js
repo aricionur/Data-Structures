@@ -119,6 +119,27 @@ class LinkedList {
     this.last = this.first
     this.first = tempLast
   }
+
+  getKthFromTheEnd(k) {
+    if (this.isEmpty()) return
+    if (k < 1) return
+
+    let firstPointer = this.first
+    let lastPointer = this.first
+    let currentDistance = 0
+    const targetDistance = k
+
+    while (lastPointer) {
+      if (currentDistance !== targetDistance) currentDistance++
+      else firstPointer = firstPointer.next
+
+      lastPointer = lastPointer.next
+    }
+
+    if (currentDistance !== targetDistance) return // that means desired k th index is greater than the size of the Linked List !!!
+
+    return firstPointer.value
+  }
 }
 
 LinkedList.prototype.toString = function linkedListToString() {

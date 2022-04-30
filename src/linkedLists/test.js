@@ -46,5 +46,15 @@ console.log(linkedList.toString())
 // const listAsArray = linkedList.toArray()
 // console.log("listAsArray:", listAsArray)
 
-linkedList.reverse()
+// linkedList.reverse()
+// console.log(linkedList.toString())
+
+linkedList.addLast(40)
+linkedList.addLast(50)
+const kThFromTheEnd = linkedList.getKthFromTheEnd(1)
+// const kThFromTheEnd = linkedList.getKthFromTheEnd(3)
+// const kThFromTheEnd = linkedList.getKthFromTheEnd(-2)
+// const kThFromTheEnd = linkedList.getKthFromTheEnd(8)
+console.log("kThFromTheEnd:", kThFromTheEnd)
+
 console.log(linkedList.toString())
