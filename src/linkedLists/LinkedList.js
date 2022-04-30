@@ -140,6 +140,25 @@ class LinkedList {
 
     return firstPointer.value
   }
+
+  printMiddle() {
+    if (this.isEmpty()) {
+      console.log("!!! List is empty !!!!")
+      return
+    }
+
+    let slowPointer = this.first
+    let fastPointer = this.first
+
+    // The conditions in the while loop, checks very well if the size of list is an even or odd number. Hence, function can print one or two middle node perfectly
+    while (fastPointer !== this.last && fastPointer.next !== this.last) {
+      slowPointer = slowPointer.next
+      fastPointer = fastPointer.next.next
+    }
+
+    if (fastPointer === this.last) console.log("Middle(s):", slowPointer.value)
+    else console.log("Middle(s):", slowPointer.value, ",", slowPointer.next.value)
+  }
 }
 
 LinkedList.prototype.toString = function linkedListToString() {
