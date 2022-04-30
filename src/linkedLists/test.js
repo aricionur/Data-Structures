@@ -57,8 +57,17 @@ linkedList.addLast(30)
 // // const kThFromTheEnd = linkedList.getKthFromTheEnd(8)
 // console.log("kThFromTheEnd:", kThFromTheEnd)
 
+// linkedList.addLast(40)
+// linkedList.addLast(50)
+// linkedList.addLast(60) // this is to check a list having size which is an even number
+// console.log(linkedList.toString())
+// linkedList.printMiddle()
+
 linkedList.addLast(40)
 linkedList.addLast(50)
 linkedList.addLast(60) // this is to check a list having size which is an even number
-console.log(linkedList.toString())
-linkedList.printMiddle()
+const lastNode = linkedList.findNode(60)
+const middleNode = linkedList.findNode(30)
+lastNode.next = middleNode // create a loop
+const hasLoop = linkedList.hasLoop()
+console.log("hasLoop:", hasLoop)

@@ -13,6 +13,18 @@ class LinkedList {
     return false
   }
 
+  findNode(value) {
+    if (this.isEmpty()) return
+
+    let node = this.first
+    while (node) {
+      if (node.value === value) return node
+      node = node.next
+    }
+
+    return
+  }
+
   addFirst(value) {
     const newNode = new Node(value, this.first)
 
@@ -158,6 +170,25 @@ class LinkedList {
 
     if (fastPointer === this.last) console.log("Middle(s):", slowPointer.value)
     else console.log("Middle(s):", slowPointer.value, ",", slowPointer.next.value)
+  }
+
+  /**
+   * This function implements the Floyd’s Cycle-finding Algorithm.
+   */
+  hasLoop() {
+    if (this.isEmpty() || this.first === this.last) return false
+
+    let slowPointer = this.first
+    let fastPointer = this.first
+
+    while (fastPointer) {
+      slowPointer = slowPointer.next
+      fastPointer = fastPointer.next && fastPointer.next.next
+
+      if (slowPointer === fastPointer) return true
+    }
+
+    return false
   }
 }
 
