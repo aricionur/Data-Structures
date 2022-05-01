@@ -11,7 +11,7 @@ class ArrayQueue {
   }
 
   enqueue(item) {
-    if (this.isFull) throw new Error("Queue is full!")
+    if (this.isFull()) throw new Error("Queue is full!")
 
     this.items[this.rear] = item
     this.rear = (this.rear + 1) % this.size
