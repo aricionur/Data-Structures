@@ -7,6 +7,22 @@ class LinkedList {
     this.size = 0
   }
 
+  // Implement Iterator Pattern to make the class iterative for javascript iteration loops.
+  [Symbol.iterator]() {
+    let node = this.first
+
+    return {
+      next: () => {
+        if (!node) return { done: true }
+
+        const value = node.value
+        node = node.next
+
+        return { value }
+      },
+    }
+  }
+
   isEmpty() {
     if (!this.first) return true
 
@@ -70,6 +86,24 @@ class LinkedList {
     node.next = null
     this.last = node
 
+    this.size--
+  }
+
+  deleteAt(nodeIndex) {
+    if (this.isEmpty()) return
+    if (nodeIndex > this.size - 1) return
+
+    if (nodeIndex === 0 && this.first === this.last) {
+      this.first = this.last = null // Dont forget to assign 'first' as null when one item left in list !!!
+      this.size--
+      return
+    }
+
+    let prevNode = this.first
+    let i = 0
+    while (i++ < nodeIndex) prevNode = prevNode.next
+
+    prevNode.next = prevNode.next.next
     this.size--
   }
 
