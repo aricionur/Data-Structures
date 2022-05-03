@@ -9,6 +9,10 @@ tree.insert(6)
 tree.insert(8)
 tree.insert(10)
 
-// const foundNode = tree.find(9)
-const foundNode = tree.find(4)
-console.log("foundNode:", foundNode)
+// // const foundNode = tree.find(9)
+// const foundNode = tree.find(4)
+// console.log("foundNode:", foundNode)
+
+// tree.traverse()
+// tree.traverse("inOrder")
+tree.traverse("postOrder")

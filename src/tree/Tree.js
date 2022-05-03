@@ -39,6 +39,36 @@ class Tree {
       else node = node.rightChild
     }
   }
+
+  traverse(travarseType) {
+    if (!travarseType) this.traversePreOrder(this.root)
+    else if (travarseType === "inOrder") this.traverseInOrder(this.root)
+    else if (travarseType === "postOrder") this.traversePostOrder(this.root)
+  }
+
+  traversePreOrder(node) {
+    if (!node) return
+
+    console.log(node.value)
+    this.traversePreOrder(node.leftChild)
+    this.traversePreOrder(node.rightChild)
+  }
+
+  traverseInOrder(node) {
+    if (!node) return
+
+    this.traverseInOrder(node.leftChild)
+    console.log(node.value)
+    this.traverseInOrder(node.rightChild)
+  }
+
+  traversePostOrder(node) {
+    if (!node) return
+
+    this.traversePostOrder(node.leftChild)
+    this.traversePostOrder(node.rightChild)
+    console.log(node.value)
+  }
 }
 
 module.exports = { Tree }
