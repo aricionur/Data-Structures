@@ -32,7 +32,12 @@ class Tree {
   }
 
   find(value) {
-    //
+    let node = this.root
+    while (node) {
+      if (node.value === value) return node
+      if (value < node.value) node = node.leftChild
+      else node = node.rightChild
+    }
   }
 }
 
