@@ -10,9 +10,15 @@ tree.insert(8)
 tree.insert(10)
 
 // // const foundNode = tree.find(9)
-// const foundNode = tree.find(4)
+// const foundNode = tree.find(7)
 // console.log("foundNode:", foundNode)
 
 // tree.traverse()
 // tree.traverse("inOrder")
-tree.traverse("postOrder")
+// tree.traverse("postOrder")
+
+// const height = tree.height()
+// console.log("height:", height)
+
+const min = tree.min()
+console.log("min:", min)

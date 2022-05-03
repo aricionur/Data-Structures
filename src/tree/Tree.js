@@ -69,6 +69,40 @@ class Tree {
     this.traversePostOrder(node.rightChild)
     console.log(node.value)
   }
+
+  height() {
+    if (!this.root) return -1
+
+    return this.heightRecursive(this.root)
+  }
+
+  heightRecursive(node) {
+    if (this.isLeaf(node)) return 0
+    return 1 + Math.max(this.heightRecursive(node.leftChild), this.heightRecursive(node.rightChild))
+  }
+
+  min() {
+    if (!this.root) return
+
+    return this.minRecursive(this.root)
+  }
+
+  minRecursive(node) {
+    if (this.isLeaf(node)) return node.value
+
+    const minLeft = node.leftChild && this.minRecursive(node.leftChild)
+    const minRight = node.rightChild && this.minRecursive(node.rightChild)
+
+    // handle unbalanced sub-trees.
+    if (!minLeft) return Math.min(minRight, node.value)
+    if (!minRight) return Math.min(minLeft, node.value)
+
+    return Math.min(Math.min(minLeft, minRight), node.value)
+  }
+
+  isLeaf(node) {
+    return !node.leftChild && !node.rightChild
+  }
 }
 
 module.exports = { Tree }
