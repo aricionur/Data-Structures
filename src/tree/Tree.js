@@ -103,6 +103,20 @@ class Tree {
   isLeaf(node) {
     return !node.leftChild && !node.rightChild
   }
+
+  equals(targetTree) {
+    if (!targetTree) return false
+
+    return this.equalsRec(this.root, targetTree.root)
+  }
+
+  equalsRec(node1, node2) {
+    if (!node1 && !node2) return true
+
+    if (node1 && node2) return node1.value === node2.value && this.equalsRec(node1.leftChild, node2.leftChild) && this.equalsRec(node1.rightChild, node2.rightChild)
+
+    return false
+  }
 }
 
 module.exports = { Tree }
