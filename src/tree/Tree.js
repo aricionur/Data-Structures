@@ -134,22 +134,38 @@ class Tree {
     return rangeMin < node.value && node.value < rangeMax && this.isBinarySearchTreeRec(node.leftChild, rangeMin, node.value) && this.isBinarySearchTreeRec(node.rightChild, node.value, rangeMax)
   }
 
-  printNodeAtDistance(targetDistance) {
+  getNodesAtDistance(targetDistance) {
     if (!this.root) return
 
-    this.printNodeAtDistanceRec(this.root, targetDistance, 0)
+    const nodesAtDistance = []
+
+    this.getNodesAtDistanceRec(this.root, targetDistance, 0, nodesAtDistance)
+
+    return nodesAtDistance
   }
 
-  printNodeAtDistanceRec(node, targetDistance, currentDistance) {
+  getNodesAtDistanceRec(node, targetDistance, currentDistance, nodesAtDistance) {
     if (!node) return
 
     if (targetDistance === currentDistance) {
-      console.log(node.value)
+      nodesAtDistance.push(node)
+      // console.log(node.value)
       return
     }
 
-    this.printNodeAtDistanceRec(node.leftChild, targetDistance, currentDistance + 1)
-    this.printNodeAtDistanceRec(node.rightChild, targetDistance, currentDistance + 1)
+    this.getNodesAtDistanceRec(node.leftChild, targetDistance, currentDistance + 1, nodesAtDistance)
+    this.getNodesAtDistanceRec(node.rightChild, targetDistance, currentDistance + 1, nodesAtDistance)
+  }
+
+  levelOrderTraversal() {
+    if (!this.root) return
+
+    const heightOfTree = this.height()
+
+    for (let i = 0; i <= heightOfTree; i++) {
+      const nodes = this.getNodesAtDistance(i)
+      for (const node of nodes) console.log(node.value)
+    }
   }
 }
 

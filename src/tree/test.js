@@ -39,4 +39,6 @@ tree.insert(10)
 // const isBinarySearchTree = tree.isBinarySearchTree()
 // console.log("isBinarySearchTree:", isBinarySearchTree)
 
-tree.printNodeAtDistance(3)
+// tree.getNodesAtDistance(1)
+
+tree.levelOrderTraversal()
