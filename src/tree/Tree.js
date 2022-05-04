@@ -117,6 +117,40 @@ class Tree {
 
     return false
   }
+
+  swapTree(root) {
+    const temp = root.leftChild
+    root.leftChild = root.rightChild
+    root.rightChild = temp
+  }
+
+  isBinarySearchTree() {
+    return this.isBinarySearchTreeRec(this.root, Number.NEGATIVE_INFINITY, Number.POSITIVE_INFINITY)
+  }
+
+  isBinarySearchTreeRec(node, rangeMin, rangeMax) {
+    if (!node) return true
+
+    return rangeMin < node.value && node.value < rangeMax && this.isBinarySearchTreeRec(node.leftChild, rangeMin, node.value) && this.isBinarySearchTreeRec(node.rightChild, node.value, rangeMax)
+  }
+
+  printNodeAtDistance(targetDistance) {
+    if (!this.root) return
+
+    this.printNodeAtDistanceRec(this.root, targetDistance, 0)
+  }
+
+  printNodeAtDistanceRec(node, targetDistance, currentDistance) {
+    if (!node) return
+
+    if (targetDistance === currentDistance) {
+      console.log(node.value)
+      return
+    }
+
+    this.printNodeAtDistanceRec(node.leftChild, targetDistance, currentDistance + 1)
+    this.printNodeAtDistanceRec(node.rightChild, targetDistance, currentDistance + 1)
+  }
 }
 
 module.exports = { Tree }
