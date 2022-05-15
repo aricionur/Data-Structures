@@ -6,4 +6,5 @@ Below common data structures implemented in Javascript
 - Stack
 - Queue
 - Hash Table (Chaining(Linked List) - Open Addresing(Double Hashing))
-- Tree
+- Tree (Binary Search Tree)
+- AVL Tree
