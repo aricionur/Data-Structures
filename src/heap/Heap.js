@@ -41,6 +41,11 @@ class Heap {
     const root = this.items[0]
     this.items[0] = this.items[--this.size]
 
+    this.bubbleDown()
+
+    return root
+  }
+  bubbleDown() {
     let index = 0
     while (index <= this.size && !this.isValidParent(index)) {
       const largerChildIndex = this.largerChildIndex(index)
@@ -48,14 +53,15 @@ class Heap {
       this.swap(index, largerChildIndex)
       index = largerChildIndex
     }
-
-    return root
   }
 
   largerChildIndex(index) {
-    if (!this.hasLeftChild()) return this.rightChildIndex(index)
-    if (!this.hasRightChild()) return this.leftChildIndex(index)
+    if (!this.hasLeftChild(index)) return this.rightChildIndex(index)
+    if (!this.hasRightChild(index)) return this.leftChildIndex(index)
 
+    const leftChild = this.leftChild(index)
+    const rightChild = this.rightChild(index)
+    const result = this.leftChild(index) > this.rightChild(index) ? this.leftChildIndex(index) : this.rightChildIndex(index)
     return this.leftChild(index) > this.rightChild(index) ? this.leftChildIndex(index) : this.rightChildIndex(index)
   }
 
@@ -78,11 +84,11 @@ class Heap {
   }
 
   leftChild(index) {
-    this.items[this.leftChildIndex(index)]
+    return this.items[this.leftChildIndex(index)]
   }
 
   rightChild(index) {
-    this.items[this.rightChildIndex(index)]
+    return this.items[this.rightChildIndex(index)]
   }
 
   leftChildIndex(index) {
