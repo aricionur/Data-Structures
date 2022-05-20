@@ -8,6 +8,10 @@ class Heap {
     return this.size === 0
   }
 
+  max() {
+    return this.items[0]
+  }
+
   insert(value) {
     this.items[this.size++] = value
 
@@ -45,6 +49,7 @@ class Heap {
 
     return root
   }
+
   bubbleDown() {
     let index = 0
     while (index <= this.size && !this.isValidParent(index)) {
@@ -59,9 +64,6 @@ class Heap {
     if (!this.hasLeftChild(index)) return this.rightChildIndex(index)
     if (!this.hasRightChild(index)) return this.leftChildIndex(index)
 
-    const leftChild = this.leftChild(index)
-    const rightChild = this.rightChild(index)
-    const result = this.leftChild(index) > this.rightChild(index) ? this.leftChildIndex(index) : this.rightChildIndex(index)
     return this.leftChild(index) > this.rightChild(index) ? this.leftChildIndex(index) : this.rightChildIndex(index)
   }
 
