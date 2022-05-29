@@ -65,6 +65,37 @@ class Trie {
 
     if (!child.hasChildren() && !child.isEndOfWord) root.removeChild(currentWordChar)
   }
+
+  findWords(searchWord) {
+    const foundWords = []
+    if (!searchWord) return foundWords
+
+    const lastNode = this.findLastNode(searchWord)
+    if (!lastNode) return foundWords
+
+    this.findWordsRec(lastNode, searchWord, foundWords)
+
+    return foundWords
+  }
+
+  findLastNode(searchWord) {
+    let currentNode = this.root
+    for (const char of searchWord) {
+      const child = currentNode.getChild(char)
+      if (!child) return
+      currentNode = child
+    }
+
+    return currentNode
+  }
+
+  findWordsRec(node, word, foundWords) {
+    if (node.isEndOfWord) foundWords.push(word)
+
+    for (const child of node.getChildren()) {
+      if (child) this.findWordsRec(child, word + child.value, foundWords)
+    }
+  }
 }
 
 module.exports = { Trie }
