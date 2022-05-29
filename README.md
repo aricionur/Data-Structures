@@ -9,3 +9,4 @@ Below common data structures implemented in Javascript
 - Tree (Binary Search Tree)
 - AVL Tree
 - Heap
+- Trie
