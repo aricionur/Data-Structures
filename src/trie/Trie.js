@@ -9,15 +9,24 @@ class Trie {
     let currentNode = this.root
 
     for (const char of word) {
-      // const index = char.charCodeAt() - 97
-
       if (!currentNode.hasChild(char)) currentNode.addChild(char)
       currentNode = currentNode.getChild(char)
-      // if (!currentNode.children[index]) currentNode.children[index] = new Node(char)
-      // currentNode = currentNode.children[index]
     }
 
     currentNode.isEndOfWord = true
+  }
+
+  contains(word) {
+    if (!word) return false
+
+    let currentNode = this.root
+    for (const char of word) {
+      currentNode = currentNode.getChild(char)
+      if (!currentNode) return false
+    }
+
+    if (currentNode.isEndOfWord) return true
+    return false
   }
 }
 
