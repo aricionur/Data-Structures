@@ -9,10 +9,12 @@ class Trie {
     let currentNode = this.root
 
     for (const char of word) {
-      const index = char.charCodeAt() - 97
+      // const index = char.charCodeAt() - 97
 
-      if (!currentNode.children[index]) currentNode.children[index] = new Node(char)
-      currentNode = currentNode.children[index]
+      if (!currentNode.hasChild(char)) currentNode.addChild(char)
+      currentNode = currentNode.getChild(char)
+      // if (!currentNode.children[index]) currentNode.children[index] = new Node(char)
+      // currentNode = currentNode.children[index]
     }
 
     currentNode.isEndOfWord = true
