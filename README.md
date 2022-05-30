@@ -10,3 +10,4 @@ Below common data structures implemented in Javascript
 - AVL Tree
 - Heap
 - Trie
+- Graph
