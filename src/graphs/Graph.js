@@ -1,4 +1,5 @@
 const { ArrayQueue } = require("../queue/ArrayQueue")
+const { Stack } = require("../stack/Stack")
 
 class Graph {
   constructor() {
@@ -58,6 +59,53 @@ class Graph {
 
       this.adjacencyMap[currentNode].forEach(adjacentNode => !visited[adjacentNode] && queue.enqueue(adjacentNode))
     }
+  }
+
+  topologicalSort() {
+    const stack = new Stack()
+    const visited = {}
+
+    for (const node of Object.keys(this.adjacencyMap)) {
+      if (!visited[node]) this.topologicalSortRec(node, visited, stack)
+    }
+
+    const sorted = []
+    while (!stack.isEmpty()) sorted.push(stack.pop())
+
+    return sorted
+  }
+
+  topologicalSortRec(node, visited, stack) {
+    visited[node] = 1
+
+    for (const adjacentNode of this.adjacencyMap[node]) {
+      if (!visited[adjacentNode]) this.topologicalSortRec(adjacentNode, visited, stack)
+    }
+
+    stack.push(node)
+  }
+
+  hasCycle() {
+    const visited = {}
+    const visiting = {}
+
+    for (const node of Object.keys(this.adjacencyMap)) {
+      if (!visited[node] && this.hasCycleRec(node, visited, visiting)) return true
+    }
+
+    return false
+  }
+
+  hasCycleRec(node, visited, visiting) {
+    if (visiting[node]) return true
+    else visiting[node] = 1
+
+    for (const adjacentNode of this.adjacencyMap[node]) {
+      if (!visited[node] && this.hasCycleRec(adjacentNode, visited, visiting)) return true
+    }
+
+    visited[node] = 1
+    delete visiting[node]
   }
 }
 
