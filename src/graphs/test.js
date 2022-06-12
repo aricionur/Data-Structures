@@ -71,14 +71,24 @@ const { WeightedGraph } = require("./WeightedGraph")
 // const shortestPath = weightedGraph.getShortestPath("A", "E")
 // console.log("shortestPath:", shortestPath)
 
-// another simple graph
+// // another simple graph
+// const weightedGraph = new WeightedGraph()
+// weightedGraph.addNode("A")
+// weightedGraph.addNode("B")
+// weightedGraph.addNode("C")
+// weightedGraph.addEdge("A", "B", 1)
+// weightedGraph.addEdge("B", "C", 2)
+// weightedGraph.addEdge("A", "C", 15)
+
+// const shortestPath = weightedGraph.getShortestPath("A", "C")
+// console.log("shortestPath:", shortestPath)
+
 const weightedGraph = new WeightedGraph()
 weightedGraph.addNode("A")
 weightedGraph.addNode("B")
 weightedGraph.addNode("C")
 weightedGraph.addEdge("A", "B", 1)
 weightedGraph.addEdge("B", "C", 2)
-weightedGraph.addEdge("A", "C", 15)
-
-const shortestPath = weightedGraph.getShortestPath("A", "C")
-console.log("shortestPath:", shortestPath)
+// weightedGraph.addEdge("A", "C", 15) // test edge to provide cycle in graph
+const hasCycle = weightedGraph.hasCycle()
+console.log("hasCycle:", hasCycle)

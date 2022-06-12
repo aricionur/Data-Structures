@@ -69,8 +69,26 @@ class WeightedGraph {
     return path
   }
 
-  buildPath() {
-    //
+  hasCycle() {
+    const nodes = Object.keys(this.edges)
+    if (!nodes.length) return false
+
+    const randomInitialNode = nodes[0]
+    const visited = {}
+
+    return this.hasCycleRec(randomInitialNode, visited)
+  }
+
+  hasCycleRec(node, visited, parent) {
+    visited[node] = 1
+
+    for (const edge of this.edges[node]) {
+      const { to } = edge
+      if (parent === to) continue
+      if (visited[to] || this.hasCycleRec(to, visited, node)) return true
+    }
+
+    return false
   }
 }
 
