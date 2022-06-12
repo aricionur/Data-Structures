@@ -11,3 +11,4 @@ Below common data structures implemented in Javascript
 - Heap
 - Trie
 - Graph
+- WeightedGraph (Dijkstra's algorithm)

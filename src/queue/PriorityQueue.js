@@ -1,42 +1,47 @@
+class Node {
+  constructor(value, priority) {
+    this.value = value
+    this.priority = priority
+  }
+}
+
 class PriorityQueue {
-  constructor(size) {
+  constructor(size, priorityOrder = "ascending") {
+    if (!size) throw new Error("queue size must be provided !!!")
+    if (!["ascending", "descending"].includes(priorityOrder)) throw new Error("queue order type must be provided !!!")
+
+    this.priorityOrder = priorityOrder
     this.size = size
     this.items = Array(size)
-    this.front = 0
-    this.rear = 0
     this.count = 0
   }
 
-  dequeue() {
-    if (this.isEmpty()) throw new Error("Queue is empty!")
-
-    const item = this.items[this.front]
-
-    this.front = (this.front + 1) % this.size
-    this.count--
-
-    return item
-  }
-
-  enqueue(item) {
+  enqueue(value, priority) {
     if (this.isFull()) throw new Error("Queue is full!")
+
+    const node = new Node(value, priority)
 
     let index = this.count - 1
     while (index >= 0) {
-      if (this.items[index] > item) this.items[index + 1] = this.items[index] // shift all greater values to the right.
-      else break
+      if (this.priorityOrder === "ascending") {
+        if (this.items[index].priority > priority) this.items[index + 1] = this.items[index] // shift all greater values to the right.
+        else break
+      } else {
+        if (this.items[index].priority < priority) this.items[index + 1] = this.items[index] // shift all smaller values to the right.
+        else break
+      }
+
       index--
     }
 
-    this.items[index + 1] = item
-
+    this.items[index + 1] = node
     this.count++
   }
 
   remove() {
     if (this.isEmpty()) throw new Error("Queue is empty!")
 
-    return this.items[--this.count]
+    return this.items[--this.count].value
   }
 
   peek() {

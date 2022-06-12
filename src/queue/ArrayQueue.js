@@ -3,6 +3,7 @@
  */
 class ArrayQueue {
   constructor(size) {
+    if (!size) throw new Error("queue size must be provided !!!")
     this.size = size
     this.items = Array(size)
     this.front = 0
