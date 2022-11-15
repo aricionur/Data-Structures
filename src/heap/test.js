@@ -1,5 +1,6 @@
 const { Heap } = require("./Heap")
 const { heapify, findKthLargestNumber } = require("./exercises")
+const { MinHeap } = require("./MinHeap")
 
 // const heap = new Heap()
 // heap.insert(10)
@@ -26,6 +27,34 @@ const { heapify, findKthLargestNumber } = require("./exercises")
 // heapify(testArray)
 // console.log("Heapified testArray:", testArray)
 
-const testArray = [5, 3, 8, 4, 1, 2]
-const foundNmber = findKthLargestNumber(testArray, 3)
-console.log("foundNmber:", foundNmber)
+// const testArray = [5, 3, 8, 4, 1, 2]
+// const foundNmber = findKthLargestNumber(testArray, 3)
+// console.log("foundNmber:", foundNmber)
+
+const heap = new MinHeap()
+heap.insert(10)
+heap.insert(5)
+heap.insert(17)
+heap.insert(4)
+heap.insert(22)
+console.log("heap:", heap)
+
+console.log("removed:", heap.remove())
+console.log("heap:", heap)
+
+console.log("removed:", heap.remove())
+console.log("heap:", heap)
+
+console.log("removed:", heap.remove())
+console.log("heap:", heap)
+
+console.log("removed:", heap.remove())
+console.log("heap:", heap)
+
+console.log("removed:", heap.remove())
+console.log("heap:", heap)
+
+console.log("removed:", heap.remove())
+console.log("heap:", heap)
+
+// console.log("heap:", heap.toString())
