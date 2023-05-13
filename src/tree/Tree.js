@@ -185,6 +185,35 @@ class Tree {
 
     return values
   }
+
+  isSymmetric() {
+    return isSymmetricRec(this.root.left, this.root.right)
+  }
+
+  isSymmetricRec(node1, node2) {
+    if (!node1 && !node2) return true
+
+    if (node1 && node2) return node1.val === node2.val && isSymmetricRec(node1.left, node2.right) && isSymmetricRec(node1.right, node2.left)
+
+    return false
+  }
+
+  isSymmetricIterative() {
+    const stack = [this.root.left, this.root.right]
+
+    while (stack.length) {
+      const right = stack.pop()
+      const left = stack.pop()
+
+      if (!left && !right) continue
+      if (left?.val !== right?.val) return false
+
+      stack.push(left.left, right.right)
+      stack.push(left.right, right.left)
+    }
+
+    return true
+  }
 }
 
 module.exports = { Tree }
