@@ -214,6 +214,19 @@ class Tree {
 
     return true
   }
+
+  sumOfLeftLeaves(root) {
+    if (!this.root) return 0
+
+    return sumOfLeftLeavesRec(this.root, 0)
+  }
+
+  sumOfLeftLeavesRec(node, sum, isLeftLeaf) {
+    if (!node) return 0
+    if (isLeaf(node) && isLeftLeaf) return sum + node.val
+
+    return sumOfLeftLeavesRec(node.left, sum, true) + sumOfLeftLeavesRec(node.right, sum, false)
+  }
 }
 
 module.exports = { Tree }
