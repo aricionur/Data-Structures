@@ -167,6 +167,24 @@ class Tree {
       for (const node of nodes) console.log(node.value)
     }
   }
+
+  inorderTraversalIterative() {
+    const values = []
+    const stack = []
+    let node = this.root
+
+    while (node || stack.length) {
+      while (node) {
+        stack.push(node)
+        node = node.leftChild
+      }
+      node = stack.pop()
+      values.push(node.value)
+      node = node.rightChild
+    }
+
+    return values
+  }
 }
 
 module.exports = { Tree }

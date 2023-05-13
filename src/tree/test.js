@@ -41,4 +41,7 @@ tree.insert(10)
 
 // tree.getNodesAtDistance(1)
 
-tree.levelOrderTraversal()
+// tree.levelOrderTraversal()
+
+const values = tree.inorderTraversalIterative()
+console.log(values)
