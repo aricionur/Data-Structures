@@ -1,21 +1,32 @@
 const { Tree } = require("./Tree")
 
 const tree = new Tree()
-tree.insert(7)
+// tree.insert(7)
+// tree.insert(4)
+// tree.insert(9)
+// tree.insert(1)
+// tree.insert(6)
+// tree.insert(8)
+// tree.insert(10)
+
+tree.insert(3)
 tree.insert(4)
-tree.insert(9)
-tree.insert(1)
-tree.insert(6)
-tree.insert(8)
-tree.insert(10)
+tree.insert(7)
+tree.insert(5)
+tree.insert(2)
+// tree.insert(4)
+// tree.insert(5)
+// tree.insert(6)
+// tree.insert(7)
 
 // // const foundNode = tree.find(9)
 // const foundNode = tree.find(7)
 // console.log("foundNode:", foundNode)
 
-// tree.traverse()
+tree.traverse()
 // tree.traverse("inOrder")
 // tree.traverse("postOrder")
+console.log("---")
 
 // const height = tree.height()
 // console.log("height:", height)
@@ -36,12 +47,16 @@ tree.insert(10)
 
 // const isBinarySearchTree = tree.isBinarySearchTree()
 // tree.swapTree(tree.root) // just for test non-binary search tree
-// const isBinarySearchTree = tree.isBinarySearchTree()
-// console.log("isBinarySearchTree:", isBinarySearchTree)
+const isBinarySearchTree = tree.isBinarySearchTree()
+console.log("isBinarySearchTree:", isBinarySearchTree)
 
 // tree.getNodesAtDistance(1)
 
 // tree.levelOrderTraversal()
 
-const values = tree.inorderTraversalIterative()
-console.log(values)
+console.log("---")
+
+// const values = tree.inorderTraversalIterative()
+// console.log(values)
+
+console.log("breadth-first-search", tree.breadthFirstSearch())

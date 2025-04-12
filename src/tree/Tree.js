@@ -227,6 +227,21 @@ class Tree {
 
     return sumOfLeftLeavesRec(node.left, sum, true) + sumOfLeftLeavesRec(node.right, sum, false)
   }
+
+  breadthFirstSearch() {
+    const queue = [this.root]
+    const visited = []
+
+    while (queue.length) {
+      const node = queue.shift()
+      visited.push(node.value)
+
+      if (node.leftChild) queue.push(node.leftChild)
+      if (node.rightChild) queue.push(node.rightChild)
+    }
+
+    return visited
+  }
 }
 
 module.exports = { Tree }
